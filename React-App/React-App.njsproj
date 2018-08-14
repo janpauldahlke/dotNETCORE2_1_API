@@ -1,0 +1,77 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>React-App</Name>
+    <RootNamespace>React-App</RootNamespace>
+    <EnableTypeScript>true</EnableTypeScript>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <ToolsVersionPromptShown>0.0</ToolsVersionPromptShown>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>1f663711-bc59-4941-bad8-59f262373d2f</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <StartWebBrowser>false</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app.js" />
+    <Content Include=".gitignore" />
+    <Content Include="package.json" />
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\index.html" />
+    <Content Include="README.md" />
+    <Content Include="src\App.css" />
+    <Content Include="src\components_aka_ducks\Todo\ToDoCardStyle.css" />
+    <Content Include="src\index.css" />
+    <Content Include="src\logo.svg" />
+    <Content Include="tsconfig.json" />
+    <Content Include="tsconfig.prod.json" />
+    <Content Include="tsconfig.test.json" />
+    <Content Include="tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\components_aka_ducks\" />
+    <Folder Include="src\Ducks\" />
+    <Folder Include="src\components_aka_ducks\Todo\" />
+    <Folder Include="src\containers\" />
+    <Folder Include="types\" />
+    <Folder Include="src\" />
+    <Folder Include="public\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="src\App.tsx" />
+    <TypeScriptCompile Include="src\AppState.ts" />
+    <TypeScriptCompile Include="src\components_aka_ducks\Todo\index.tsx" />
+    <TypeScriptCompile Include="src\components_aka_ducks\Todo\TodoCard.tsx" />
+    <TypeScriptCompile Include="src\components_aka_ducks\Todo\TodoView.tsx" />
+    <TypeScriptCompile Include="src\containers\TodoCardContainer.ts" />
+    <TypeScriptCompile Include="src\containers\TodoViewContainer.ts" />
+    <TypeScriptCompile Include="src\Ducks\TodoDuck.ts" />
+    <TypeScriptCompile Include="src\index.tsx" />
+    <TypeScriptCompile Include="src\registerServiceWorker.ts" />
+    <TypeScriptCompile Include="types\images.d.ts" />
+    <TypeScriptCompile Include="types\Todo.d.ts" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+</Project>
