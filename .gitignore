@@ -1,6 +1,6 @@
 React-App/node_modules/**
 .vs/**
-CORE_2_1_API.sln
-CORE_2_1_API/bin
+CORE_2_1_API/bin/**
 CORE_2_1_API/appsettings.**
 CORE_2_1_API/obj/**
+CORE_2_1_API/**.csproj.user*

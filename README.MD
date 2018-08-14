@@ -12,7 +12,9 @@ yes, its a small API, just for testing purposes
 
 then have the visual studio npm taskrunner installed, adjust node via PATH to your needs in taskrunner settings  
 navigate into the folder react-app
-either use bash (better way) or the taskrunner, press/click the start script
-have a lifewatcher provided to you thingy
+either use bash (better way) or the taskrunner, press/click the install script  
+then ```npm run start```  
+get served
+have a lifewatcher that autoreloads your changes on save provided to your thingy
 
 have fun with it  
