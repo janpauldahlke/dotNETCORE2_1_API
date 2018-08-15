@@ -41,6 +41,7 @@
     <Content Include="README.md" />
     <Content Include="src\App.css" />
     <Content Include="src\components_aka_ducks\Todo\ToDoCardStyle.css" />
+    <Content Include="src\components_aka_ducks\Todo\TodoCreation.css" />
     <Content Include="src\index.css" />
     <Content Include="src\logo.svg" />
     <Content Include="tsconfig.json" />

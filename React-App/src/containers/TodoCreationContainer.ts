@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch: any ): TodoCreationProps => {
   } as TodoCreationProps
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoCreation);
+export default connect<TodoCreationProps, TodoCreationProps, TodoCreationProps>(mapStateToProps, mapDispatchToProps)(TodoCreation);

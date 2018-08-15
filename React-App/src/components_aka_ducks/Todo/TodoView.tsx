@@ -79,10 +79,11 @@ export default class TodoView extends React.Component<TodoViewProps, TodoViewSta
             <Portal>
             <div className="lightbox">
             <ClickAwayListener onClickAway={() => {
-              console.log('triggered onClickAway')
               this.setState({ showCreationDialog: !this.state.showCreationDialog })
             }}>
-                <TodoCreationContainer />
+                <TodoCreationContainer close={() => {
+                  this.setState({ showCreationDialog: !this.state.showCreationDialog })
+                }} />
                </ClickAwayListener >
             </div>
             </Portal>}

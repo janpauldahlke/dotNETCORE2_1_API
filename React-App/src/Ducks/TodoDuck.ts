@@ -185,7 +185,7 @@ export default class TodosDuck {
   }
 
   public static createTodoReducerFunction(state: Todo[], action: createTodoActionType): Todo[] {
-    let newState = Object.assign([], state);
+    let newState : Todo[] = Object.assign([], state);
     newState.push(action.Todo)
     return newState;
   }

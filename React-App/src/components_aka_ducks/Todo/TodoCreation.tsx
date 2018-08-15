@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export interface TodoCreationProps {
   createTodo?: (todo: Todo) => void;
+  close?: () => void;
 }
 
 export interface TodoCreationState {
@@ -16,7 +17,7 @@ export default class TodoCreation extends React.Component<TodoCreationProps, Tod
     } as Todo
   }
 
-  onchangeValue(e: any) {
+  onchangeValue(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       Todo: {
         ...this.state.Todo,
@@ -36,22 +37,24 @@ export default class TodoCreation extends React.Component<TodoCreationProps, Tod
   
     return (
       <form>
-        <h5>create a new Todo here</h5>
         <div className="form-group form-wrapper">
           <label>enter author</label>
           <input
-            value={this.state.Todo.Author}
+            defaultValue={this.state.Todo.Author}
             onChange={this.onchangeValue.bind(this)}
             className="form-control" name="Author" />
           <label>enter title</label>
           <input
-            value={this.state.Todo.Title}
+            defaultValue={this.state.Todo.Title}
             onChange={this.onchangeValue.bind(this)}
             className="form-control" name="Title" />
           <button
             onClick={(e) => {
               e.preventDefault();
               this.createATodo(this.state.Todo);
+              if (typeof this.props.close !== 'undefined') {
+                this.props.close();
+              }
             }}
             className="btn btn-success">saves</button>
         </div>
