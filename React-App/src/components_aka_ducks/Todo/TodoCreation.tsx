@@ -28,7 +28,8 @@ export default class TodoCreation extends React.Component<TodoCreationProps, Tod
   createATodo(todo: Todo) { //this ould be a point to implement a UI store
     if (typeof this.props.createTodo !== 'undefined') {
       this.props.createTodo(todo);
-    }
+      this.setState({ Todo: { Title: '', Author: '' } as Todo }) 
+    } 
   }
 
   render() {
@@ -36,13 +37,15 @@ export default class TodoCreation extends React.Component<TodoCreationProps, Tod
     return (
       <form>
         <h5>create a new Todo here</h5>
-        <div className="form-group">
+        <div className="form-group form-wrapper">
           <label>enter author</label>
           <input
+            value={this.state.Todo.Author}
             onChange={this.onchangeValue.bind(this)}
             className="form-control" name="Author" />
           <label>enter title</label>
           <input
+            value={this.state.Todo.Title}
             onChange={this.onchangeValue.bind(this)}
             className="form-control" name="Title" />
           <button
@@ -52,7 +55,7 @@ export default class TodoCreation extends React.Component<TodoCreationProps, Tod
             }}
             className="btn btn-success">saves</button>
         </div>
-      </form>
+     </form>
     )
   }
 }

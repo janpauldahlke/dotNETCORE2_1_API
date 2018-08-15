@@ -1,8 +1,10 @@
 /// <reference path="../../containers/TodoCardContainer.ts" />
 import * as React from 'react';
-//import axios from 'axios';
+import Portal from '@material-ui/core/Portal';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-//import TodoCard from './TodoCard';
+import './TodoCreation.css';
+
 import TodoCard from './../../containers/TodoCardContainer';
 import TodoCreationContainer from './../../containers/TodoCreationContainer';
 
@@ -74,7 +76,16 @@ export default class TodoView extends React.Component<TodoViewProps, TodoViewSta
             }}
             className="btn btn-primary">create  new todo</button>
           {this.state.showCreationDialog &&
-            <TodoCreationContainer />}
+            <Portal>
+            <div className="lightbox">
+            <ClickAwayListener onClickAway={() => {
+              console.log('triggered onClickAway')
+              this.setState({ showCreationDialog: !this.state.showCreationDialog })
+            }}>
+                <TodoCreationContainer />
+               </ClickAwayListener >
+            </div>
+            </Portal>}
         </div>
         {this.props.Todos.length > 0 &&
           <div className="row">

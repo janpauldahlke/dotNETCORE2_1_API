@@ -160,7 +160,7 @@ export default class TodosDuck {
   }
 
   public static getTodoByIdReducerFunction(state: Todo[] = [], action: getTodoByID): Todo[] {
-    const newState = Object.assign({}, state);  // do we need this really? i think its unnesessary. my english omg!!!
+    const newState = Object.assign([], state);  // do we need this really? i think its unnesessary. my english omg!!!
     newState.push(action.Todo);
     return newState;
   }
