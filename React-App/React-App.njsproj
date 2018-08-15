@@ -62,8 +62,10 @@
     <TypeScriptCompile Include="src\AppState.ts" />
     <TypeScriptCompile Include="src\components_aka_ducks\Todo\index.tsx" />
     <TypeScriptCompile Include="src\components_aka_ducks\Todo\TodoCard.tsx" />
+    <TypeScriptCompile Include="src\components_aka_ducks\Todo\TodoCreation.tsx" />
     <TypeScriptCompile Include="src\components_aka_ducks\Todo\TodoView.tsx" />
     <TypeScriptCompile Include="src\containers\TodoCardContainer.ts" />
+    <TypeScriptCompile Include="src\containers\TodoCreationContainer.ts" />
     <TypeScriptCompile Include="src\containers\TodoViewContainer.ts" />
     <TypeScriptCompile Include="src\Ducks\TodoDuck.ts" />
     <TypeScriptCompile Include="src\index.tsx" />

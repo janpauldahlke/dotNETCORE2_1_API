@@ -31,8 +31,10 @@ enum TodoActions {
   GET_TODO_BY_ID = 'GET_TODO_BY_ID',
   DELETE_TO_BY_ID = 'DELETE_TO_BY_ID',
   UPDATE_STATUS_BY_ID = 'UPDATE_STATUS_BY_ID',
+  CREATE_TODO = 'CREATE_TODO',
 }
 
+type createTodoActionType = { type: string, Todo: Todo };
 type getAllTodosActionType = { type: string, Todos: Todo[] };
 type getTodoByID = { type: string, Todo: Todo };
 type deleteTodoByIdActionType = { type: string, id: number }; // del should return the new array? at least it should be removed from the redux store
@@ -61,6 +63,11 @@ export default class TodosDuck {
     type: TodoActions.UPDATE_STATUS_BY_ID,
     id,
     todo,
+  })
+
+  public static createTodoAction = (Todo: Todo): createTodoActionType => ({
+    type: TodoActions.CREATE_TODO,
+    Todo,
   })
   
 // Thunk
@@ -110,6 +117,21 @@ export default class TodosDuck {
         }).catch((err) => console.log(err))
     }
   }
+
+  public static createTodo(todo: Todo) {
+    
+    return (dispatch: any) => {
+      const url = '/api/todo';
+      // the next 2 lines here adds the status of IsCompleted=false here! // tbd
+      let newTodo: Todo = Object.assign({}, todo);
+      newTodo.IsCompleted = false;
+      createAxiosInstance().post(url, newTodo)
+        .then((res) => {
+          dispatch(TodosDuck.createTodoAction(res.data))
+        })
+        .catch((err) => { console.log(err)})
+    }
+  }
  
 
 // Reducer
@@ -125,6 +147,8 @@ export default class TodosDuck {
         return TodosDuck.deleteTodoByIdReducerFunction(state, action as deleteTodoByIdActionType);
       case TodoActions.UPDATE_STATUS_BY_ID:
         return TodosDuck.updateTodoByIdReducerFunction(state, action as updateStatusByIdActionType);
+      case TodoActions.CREATE_TODO:
+        return TodosDuck.createTodoReducerFunction(state, action as createTodoActionType);
       default:
         return state;
     } 
@@ -157,6 +181,12 @@ export default class TodosDuck {
       }
     });
 
+    return newState;
+  }
+
+  public static createTodoReducerFunction(state: Todo[], action: createTodoActionType): Todo[] {
+    let newState = Object.assign([], state);
+    newState.push(action.Todo)
     return newState;
   }
 }

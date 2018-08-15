@@ -4,13 +4,15 @@ import * as React from 'react';
 
 //import TodoCard from './TodoCard';
 import TodoCard from './../../containers/TodoCardContainer';
+import TodoCreationContainer from './../../containers/TodoCreationContainer';
 
  
   export interface TodoViewProps {
     getTodos: () => void;
     Todos: Todo[]; 
   }
-  export interface TodoViewState{
+export interface TodoViewState{
+    showCreationDialog: boolean
     //IsLoaded: boolean,
     //ToDo: Todo[],
   }
@@ -29,15 +31,20 @@ export default class TodoView extends React.Component<TodoViewProps, TodoViewSta
   
   //inits empty state
   readonly state = {
-    IsLoaded: false,
-    ToDo: this.initalEmptyToDo
+    //IsLoaded: false,
+    //ToDo: this.initalEmptyToDo,
+    showCreationDialog: false
   }
 
 
   public componentWillMount() {
     this.props.getTodos();
   }
- 
+
+  //functions
+  createANewTodo() {
+    this.setState({ showCreationDialog: !this.state.showCreationDialog });
+  }
 
   //renderHelper
 
@@ -56,26 +63,33 @@ export default class TodoView extends React.Component<TodoViewProps, TodoViewSta
   
    //render stuff
   render(): JSX.Element{
+  
     return (
-      this.props.Todos.length >0 ?
+      <div className="container">
+        <div className="row card">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              this.createANewTodo()
+            }}
+            className="btn btn-primary">create  new todo</button>
+          {this.state.showCreationDialog &&
+            <TodoCreationContainer />}
+        </div>
+        {this.props.Todos.length > 0 &&
+          <div className="row">
+            <div className="col-6">
+              <h1>active: </h1>
+              {this.renderTodoCard(this.props.Todos, false)}
+            </div>
+            <div className="col-6">
+              <h1>done:</h1>
+              {this.renderTodoCard(this.props.Todos, true)}
+            </div>
+          </div >
+        }
+      </div>
         
-        <div className="row">
-          <div className="col-12">
-              <button className="btn btn-primary">Add a new ToDo</button>
-          </div>
-         
-          <div className="col-6">
-            <h1>active: </h1>
-            {this.renderTodoCard(this.props.Todos, false)}
-          </div>
-          <div className="col-6">
-            <h1>done:</h1>
-            {this.renderTodoCard(this.props.Todos, true)}
-          </div>
-
-       </div >
-        :
-        <div>TodoViewLoading...generating list</div>
     );
   
   }
