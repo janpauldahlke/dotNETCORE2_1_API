@@ -6,35 +6,35 @@ export interface TodoCreationProps {
 }
 
 export interface TodoCreationState {
-  Todo: Todo
+  Todo: Todo;
 }
 
 export default class TodoCreation extends React.Component<TodoCreationProps, TodoCreationState> {
 
   readonly state = {
     Todo: {
-      
+
     } as Todo
-  }
+  };
 
   onchangeValue(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       Todo: {
         ...this.state.Todo,
-        [e.target.name] : e.target.value
+        [e.target.name]: e.target.value
       } as Todo
-    })
+    });
   }
 
   createATodo(todo: Todo) { //this ould be a point to implement a UI store
     if (typeof this.props.createTodo !== 'undefined') {
       this.props.createTodo(todo);
-      this.setState({ Todo: { Title: '', Author: '' } as Todo }) 
-    } 
+      this.setState({ Todo: { Title: '', Author: '' } as Todo });
+    }
   }
-
-  render() {
   
+  public render(): JSX.Element {
+
     return (
       <form>
         <div className="form-group form-wrapper">
@@ -58,7 +58,7 @@ export default class TodoCreation extends React.Component<TodoCreationProps, Tod
             }}
             className="btn btn-success">saves</button>
         </div>
-     </form>
-    )
+      </form>
+    );
   }
 }

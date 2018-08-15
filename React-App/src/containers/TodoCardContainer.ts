@@ -18,4 +18,4 @@ export class TodoCardContainer {
   }
 }
 
-export default connect(TodoCardContainer.mapStateToProps, TodoCardContainer.mapDispatchToProps)(TodoCard)
+export default connect(TodoCardContainer.mapStateToProps, TodoCardContainer.mapDispatchToProps)(TodoCard);

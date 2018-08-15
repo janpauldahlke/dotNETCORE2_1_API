@@ -24,5 +24,5 @@ ReactDOM.render(
     <App />
   </Provider>,
   document.getElementById('root') as HTMLElement
-)
+);
 registerServiceWorker();

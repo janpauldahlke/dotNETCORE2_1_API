@@ -42,7 +42,7 @@ export default class TodoCard extends React.Component<TodoCardProps, TodoCardSta
               className="btn btn-success"
               onClick={(e) => {
                 e.preventDefault();
-                this.updateStatusToDone()
+                this.updateStatusToDone();
               }}>{!this.props.Todo.IsCompleted ? "set to done " : "do it again"}</button>
             <button
               className="btn btn-warning"

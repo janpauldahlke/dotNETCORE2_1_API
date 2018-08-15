@@ -13,32 +13,31 @@ import TodoCreationContainer from './../../containers/TodoCreationContainer';
     getTodos: () => void;
     Todos: Todo[]; 
   }
-export interface TodoViewState{
-    showCreationDialog: boolean
+export interface TodoViewState {
+  showCreationDialog: boolean;
     //IsLoaded: boolean,
     //ToDo: Todo[],
   }
  
 
-export default class TodoView extends React.Component<TodoViewProps, TodoViewState>{
+export default class TodoView extends React.Component<TodoViewProps, TodoViewState> {
 
-  readonly initalEmptyToDo : Todo[] = [
+  readonly initalEmptyToDo: Todo[] = [
     {
-        Id: 0,
-        Title: "",
-        Author: "",
-        IsCompleted: false
+      Id: 0,
+      Title: "",
+      Author: "",
+      IsCompleted: false
     }
-  ]
+  ];
   
   //inits empty state
   readonly state = {
     //IsLoaded: false,
     //ToDo: this.initalEmptyToDo,
     showCreationDialog: false
-  }
-
-
+  };
+  
   public componentWillMount() {
     this.props.getTodos();
   }
@@ -50,21 +49,19 @@ export default class TodoView extends React.Component<TodoViewProps, TodoViewSta
 
   //renderHelper
 
-  renderTodoCard(todo: Todo[], completed : boolean): JSX.Element[]{
-    //console.log('renderToCard', todo)
+  renderTodoCard(todo: Todo[], completed: boolean): React.ReactNode {
     return todo.map((singleToDo: Todo) => {
       if (completed && singleToDo.IsCompleted) {
-        return <TodoCard Todo={singleToDo} key={singleToDo.Id} />
+        return <TodoCard Todo={singleToDo} key={singleToDo.Id} />;
       } else if(!completed && !singleToDo.IsCompleted) {
-        return <TodoCard Todo={singleToDo} key={singleToDo.Id} />
+        return <TodoCard Todo={singleToDo} key={singleToDo.Id} />;
       }
-      // this needs rework! prevent the render of the empty div
-      return <div key={Math.floor(Math.random() * 1000)}></div>
+      return null;
     });
   }
   
    //render stuff
-  render(): JSX.Element{
+  render(): JSX.Element {
   
     return (
       <div className="container">
@@ -72,17 +69,17 @@ export default class TodoView extends React.Component<TodoViewProps, TodoViewSta
           <button
             onClick={(e) => {
               e.preventDefault();
-              this.createANewTodo()
+              this.createANewTodo();
             }}
             className="btn btn-primary">create  new todo</button>
           {this.state.showCreationDialog &&
             <Portal>
             <div className="lightbox">
             <ClickAwayListener onClickAway={() => {
-              this.setState({ showCreationDialog: !this.state.showCreationDialog })
+                this.setState({ showCreationDialog: !this.state.showCreationDialog });
             }}>
                 <TodoCreationContainer close={() => {
-                  this.setState({ showCreationDialog: !this.state.showCreationDialog })
+                  this.setState({ showCreationDialog: !this.state.showCreationDialog });
                 }} />
                </ClickAwayListener >
             </div>
