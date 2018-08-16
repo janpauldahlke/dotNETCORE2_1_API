@@ -4,7 +4,9 @@ import TodoViewContainer from './containers/TodoViewContainer';
 import './App.css'; 
 
 //https://stackoverflow.com/questions/33505992/babel-6-changes-how-it-exports-default/33506169#33506169
-const BoilerplateComponent = require('../../shared/lib/BoilerplateComponent').default;
+const shared = require('../../shared/lib/index');
+const BoilerplateComponent = shared.BoilerplateComponent;
+const OtherComponent = shared.RandomComponent;
 
 export interface AppState {
   show: boolean;
@@ -32,6 +34,8 @@ class App extends React.Component {
           }}>{this.state.show ? 'hide the shared component' : 'do y want to show shared component?'}
         </button>
         {this.state.show && <BoilerplateComponent />}
+        {this.state.show && <OtherComponent />}
+
       </div>
     );
   }

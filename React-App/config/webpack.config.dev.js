@@ -78,7 +78,7 @@ module.exports = {
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
     ),
     alias: {
-      BoilerPlate : path.resolve(__dirname, './../../shared/lib/BoilerPlateComponent'),
+      BoilerPlate : path.resolve(__dirname, './../../shared/lib/index'),
     },
     // These are the reasonable defaults supported by the Node ecosystem.
     // We also include JSX as a common component filename extension to support
