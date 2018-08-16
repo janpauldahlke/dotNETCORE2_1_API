@@ -1,21 +1,28 @@
-var path = require('path');
+const path = require('path');
+const sourcePath = path.join(__dirname, './src');
+const outPath = path.join(__dirname, './lib');
+
+
+
 module.exports = {
-  entry: './src/BoilerplateComponent.jsx',
+  context: sourcePath,
+  entry: {
+    main: './index.jsx'
+  },
   output: {
-    path: path.resolve(__dirname, 'lib'),
-    filename: 'BoilerplateComponent.js',
+    path: outPath,
+    filename: './index.js',
     libraryTarget: 'commonjs' // THIS IS THE MOST IMPORTANT LINE! :mindblow: I wasted more than 2 days until realize this was the line most important in all this guide.
   },
   module: {
     rules: [
       {
         test: /\.jsx$/,
-        include: path.resolve(__dirname, 'src'),
-        exclude: /(node_modules|bower_components|build)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
+            presets: ['babel-preset-env', 'babel-preset-react']
           }
         }
       }

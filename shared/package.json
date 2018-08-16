@@ -1,5 +1,5 @@
 {
-  "name": "react-fancy-component",
+  "name": "shared_components",
   "version": "0.0.1",
   "description": "Put a description here",
   "main": "src/index.js",
@@ -24,6 +24,7 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1"
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
   }
 }
