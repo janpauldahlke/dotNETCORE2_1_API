@@ -34,7 +34,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="build\service-worker.js" />
+    <Compile Include="build\static\js\main.148fd89f.js" />
     <Content Include=".gitignore" />
+    <Content Include="build\asset-manifest.json" />
+    <Content Include="build\favicon.ico" />
+    <Content Include="build\index.html" />
+    <Content Include="build\static\css\main.c56d31d1.css" />
+    <Content Include="build\static\css\main.c56d31d1.css.map" />
+    <Content Include="build\static\js\main.148fd89f.js.map" />
+    <Content Include="build\static\media\logo.5d5d9eef.svg" />
     <Content Include="package.json" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
@@ -50,6 +59,11 @@
     <Content Include="tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="build\" />
+    <Folder Include="build\static\" />
+    <Folder Include="build\static\css\" />
+    <Folder Include="build\static\js\" />
+    <Folder Include="build\static\media\" />
     <Folder Include="src\components_aka_ducks\" />
     <Folder Include="src\Ducks\" />
     <Folder Include="src\components_aka_ducks\Todo\" />

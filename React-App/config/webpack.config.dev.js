@@ -77,6 +77,9 @@ module.exports = {
       // It is guaranteed to exist because we tweak it in `env.js`
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
     ),
+    alias: {
+      BoilerPlate : path.resolve(__dirname, './../../shared/lib/BoilerPlateComponent'),
+    },
     // These are the reasonable defaults supported by the Node ecosystem.
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
@@ -107,8 +110,9 @@ module.exports = {
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-      new TsconfigPathsPlugin({ configFile: paths.appTsConfig }),
+
+     //new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+     //new TsconfigPathsPlugin({ configFile: paths.appTsConfig }),
     ],
   },
   module: {

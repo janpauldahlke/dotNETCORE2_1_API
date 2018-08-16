@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import * as thunk from 'redux-thunk';
 import { logger } from 'redux-logger';
 import * as ReactDOM from 'react-dom';
+
 import App from './App';
-import {rootReducer,AppStateInit } from './AppState';
+import { rootReducer, AppStateInit } from './AppState';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import registerServiceWorker from './registerServiceWorker';
@@ -19,10 +20,16 @@ const store = createStore(
     (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
   ));
 
-ReactDOM.render(
+  ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root')
 );
-registerServiceWorker();
+//while in production unregister serviceWorker like this
+/*
+  import { unregister } from './registerServiceWorker';
+  unregister();
+ * */
+
+registerServiceWorker(); //https://github.com/facebook/create-react-app/issues/2715
