@@ -8,17 +8,20 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 import { rootReducer, AppStateInit } from './AppState';
 import 'bootstrap/dist/css/bootstrap.css';
-
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker, { unregister } from './registerServiceWorker';
 
 const store = createStore(
   rootReducer,
   AppStateInit.getInitialState(),
   //use compose to install redux dev tools like this
-  compose(
-    applyMiddleware(thunk.default, logger),
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-  ));
+  process.env.NODE_ENV === 'development' ?
+    compose(
+      applyMiddleware(thunk.default, logger),
+      (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+    )
+    :
+    applyMiddleware(thunk.default, logger)
+);
 
   ReactDOM.render(
   <Provider store={store}>
@@ -26,10 +29,9 @@ const store = createStore(
   </Provider>,
   document.getElementById('root')
 );
-//while in production unregister serviceWorker like this
-/*
-  import { unregister } from './registerServiceWorker';
-  unregister();
- * */
 
-registerServiceWorker(); //https://github.com/facebook/create-react-app/issues/2715
+if (process.env.NODE_ENV === 'development') {
+  registerServiceWorker(); //https://github.com/facebook/create-react-app/issues/2715
+} else {
+  unregister();
+}

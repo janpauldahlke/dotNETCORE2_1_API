@@ -7,11 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CORE_2_1_API", "CORE_2_1_AP
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "React-App", "React-App\React-App.njsproj", "{1F663711-BC59-4941-BAD8-59F262373D2F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{D0FC8A2F-32B6-4D6E-8192-AEC268216E98}"
-	ProjectSection(SolutionItems) = preProject
-		test.tsx = test.tsx
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

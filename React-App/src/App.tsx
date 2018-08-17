@@ -19,7 +19,8 @@ class App extends React.Component {
   };
 
   public render() {
-  
+
+    console.log(process.env);
     return (
       <div className="App container">
         <header className="App-header">

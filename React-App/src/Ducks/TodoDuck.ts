@@ -11,7 +11,7 @@ import { AppState } from './../AppState';
 --------------------------------------------------------------------------------------------------------*/
 //axios instance helper
 function createAxiosInstance(): AxiosInstance {
-  const baseURL = 'http://localhost:4400';
+  const baseURL = process.env.REACT_APP_BASE_API;
   return axios.create({
     baseURL,
     timeout: 5000,
@@ -71,7 +71,7 @@ export default class TodosDuck {
 
   public static getTodos() {  
     return (dispatch: ThunkDispatch<AppState, void, getAllTodosActionType>) => {
-      createAxiosInstance().get('api/todo')
+      createAxiosInstance().get(`${process.env.REACT_APP_TODO_API}`)
         .then((res) => {
           dispatch(TodosDuck.getTodosAction(res.data as Todo[]));
         })
@@ -81,8 +81,7 @@ export default class TodosDuck {
 
   public static getTodoById(id: number) {
     return (dispatch: ThunkDispatch<AppState, void, getTodoByID>) => {
-      const url = '/api/todo';
-      const parametrizedUrl = `${url}/${id}`;
+      const parametrizedUrl = `${process.env.REACT_APP_TODO_API}/${id}`;
       createAxiosInstance().get(parametrizedUrl)
         .then((res) => TodosDuck.getTodoByIdAction(res.data as Todo))
         .catch((err) => console.log(err));
@@ -91,8 +90,7 @@ export default class TodosDuck {
 
   public static deleteTodoById(id: number) {
     return (dispatch: ThunkDispatch<AppState, void, deleteTodoByIdActionType>) => {
-      const url = '/api/todo';
-      const parametrizedUrl = `${url}/${id}`;
+      const parametrizedUrl = `${process.env.REACT_APP_TODO_API}/${id}`;
       createAxiosInstance().delete(parametrizedUrl)
         .then((res) => {
           dispatch(TodosDuck.deleteTodoByIdAction(id));
@@ -103,8 +101,7 @@ export default class TodosDuck {
 
   public static updateTodoStatusById(id: number, todo: Todo) {
     return (dispatch: any) => {
-      const url = '/api/todo';
-      const parametrizedUrl = `${url}/${id}`;
+      const parametrizedUrl = `${process.env.REACT_APP_TODO_API}/${id}`;
       let newTodo: Todo = Object.assign({}, todo);
       newTodo.IsCompleted = !todo.IsCompleted;
       createAxiosInstance().put(parametrizedUrl, newTodo)
@@ -117,11 +114,10 @@ export default class TodosDuck {
   public static createTodo(todo: Todo) {
     
     return (dispatch: any) => {
-      const url = '/api/todo';
       // the next 2 lines here adds the status of IsCompleted=false here! // tbd
       let newTodo: Todo = Object.assign({}, todo);
       newTodo.IsCompleted = false;
-      createAxiosInstance().post(url, newTodo)
+      createAxiosInstance().post(`${process.env.REACT_APP_TODO_API}`, newTodo)
         .then((res) => {
           dispatch(TodosDuck.createTodoAction(res.data));
         })
