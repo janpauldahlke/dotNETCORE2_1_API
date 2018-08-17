@@ -41,13 +41,14 @@ namespace CORE_2_1_API
       {
         settings.GeneratorSettings.DefaultPropertyNameHandling = PropertyNameHandling.CamelCase;
       });
-      app.UseMvc(routes => 
-        routes.MapRoute(
-          name: "default_route",
-          template: "{controller}/{action}/{id?}",
-          defaults: new { controller = "Home", action = "Index" }
-        )
-      );
+      //app.UseMvc(routes => 
+      //  routes.MapRoute(
+      //    name: "default_route",
+      //    template: "{controller}/{action}/{id?}",
+      //    defaults: new { controller = "Home", action = "Index" }
+      //  )
+      //);
+      app.UseMvc();
     }
   }
 }

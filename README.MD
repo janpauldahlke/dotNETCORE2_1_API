@@ -30,5 +30,7 @@ const BoilerplateComponent = shared.BoilerplateComponent;
 const OtherComponent = shared.RandomComponent;
 ```
 
+also use `npm link` in /shared and then `npm link shared` in the /React-App folder
+
 my the code be with you
 ![funny and true](https://pics.onsizzle.com/2-raskreddit-u-glitteredalien-6h-nsfw-whats-your-better-than-sex-34726053.png)
