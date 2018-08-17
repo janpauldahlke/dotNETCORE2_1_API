@@ -72,6 +72,7 @@ export default class TodosDuck {
   public static getTodos() {  
     return (dispatch: ThunkDispatch<AppState, void, getAllTodosActionType>) => {
       createAxiosInstance().get(`${process.env.REACT_APP_TODO_API}`)
+      //axios.get('http://localhost/todo/api')
         .then((res) => {
           dispatch(TodosDuck.getTodosAction(res.data as Todo[]));
         })

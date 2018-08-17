@@ -28,7 +28,6 @@ namespace CORE_2_1_API
     {
 
       app.UseCors(builder => builder
-        //builder.WithOrigins("http://localhost:3000")
         .AllowCredentials()
         .AllowAnyOrigin()
         .AllowAnyHeader()
