@@ -5,3 +5,4 @@ CORE_2_1_API/appsettings.**
 CORE_2_1_API/obj/**
 CORE_2_1_API/**.csproj.user*
 shared/node_modules/**
+**/node_modules/**

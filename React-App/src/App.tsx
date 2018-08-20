@@ -8,6 +8,9 @@ const shared = require('../../shared/lib/index');
 const BoilerplateComponent = shared.BoilerplateComponent;
 const OtherComponent = shared.RandomComponent;
 
+const another_shared = require('../../another_shared/lib/index');
+const Foocomponent = another_shared.FooComponent;
+
 export interface AppState {
   show: boolean;
 }
@@ -34,8 +37,10 @@ class App extends React.Component {
             this.setState({ show: !this.state.show });
           }}>{this.state.show ? 'hide the shared component' : 'do y want to show shared component?'}
         </button>
-        {this.state.show && <BoilerplateComponent />}
+       {this.state.show && <BoilerplateComponent />}
         {this.state.show && <OtherComponent />}
+
+        <Foocomponent />
 
       </div>
     );
