@@ -34,3 +34,5 @@ also use `npm link` in /shared and then `npm link shared` in the /React-App fold
 
 my the code be with you
 ![funny and true](https://pics.onsizzle.com/2-raskreddit-u-glitteredalien-6h-nsfw-whats-your-better-than-sex-34726053.png)
+
+for publishing things to IIS make sure you have the runtime installed from here https://www.microsoft.com/net/download/dotnet-core/2.1
